@@ -1,7 +1,7 @@
 /*
  * @Author: ZQJ-1130123899
  * @Date: 2020-09-01 16:45:14
- * @LastEditTime: 2020-09-01 17:45:36
+ * @LastEditTime: 2020-09-02 09:52:41
  * @LastEditors: ZQJ-1130123899
  * @Description: vue配置
  * @FilePath: \zvue\vue.config.js
@@ -35,13 +35,24 @@ module.exports = {
     // before: app => {}
   },
   // parallel: require("os").cpus().length > 1,
-  configureWebpack: {
-    name: name,
-    resolve: {
-      alias: {
-        "@": resolve("src")
+  // eslint-disable-next-line no-unused-vars
+  configureWebpack: config => {
+    // if(process.env.NODE_ENV === 'production') {
+
+    // }else{
+
+    // }
+    return {
+      name: name,
+      // plugins: [
+
+      // ],
+      resolve: {
+        alias: {
+          "@": resolve("src")
+        }
       }
-    }
+    };
   },
   chainWebpack() {}
 };
