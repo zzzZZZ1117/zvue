@@ -7,18 +7,18 @@
  * @FilePath: \zvue\vue.config.js
  * @Additional information: NULL
  */
-"use strict";
-const path = require("path");
-const port = 9527;
-const name = "ZVUE 0=0";
+'use strict'
+const path = require('path')
+const port = 9527
+const name = 'ZVUE 0=0'
 function resolve(dir) {
-  return path.join(__dirname, dir);
+  return path.join(__dirname, dir)
 }
 module.exports = {
-  publicPath: "./",
-  outputDir: "dist",
-  assetsDir: "static",
-  indexPath: "index.html",
+  publicPath: './',
+  outputDir: 'dist',
+  assetsDir: 'static',
+  indexPath: 'index.html',
   filenameHashing: true,
   lintOnSave: true,
   runtimeCompiler: false,
@@ -49,10 +49,10 @@ module.exports = {
       // ],
       resolve: {
         alias: {
-          "@": resolve("src")
+          '@': resolve('src')
         }
       }
-    };
+    }
   },
   chainWebpack() {}
-};
+}
