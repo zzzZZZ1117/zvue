@@ -109,6 +109,7 @@
 </template>
 
 <script>
+import { login } from '@/api/user'
 export default {
   name: 'HelloWorld',
   props: {
@@ -116,15 +117,11 @@ export default {
     msg: String
   },
   created() {
-    var url = '/parameter/query'
-    this.$axios
-      .get(url)
-      .then(res => {
-        console.log(res)
-      })
-      .catch(err => {
-        console.log(err)
-      })
+    login({ username: 'lll', password: '123123' }).then(res => {
+      console.log(res)
+    }).catch(err => {
+      console.log(err)
+    })
   }
 }
 </script>
