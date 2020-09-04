@@ -1,7 +1,7 @@
 /*
  * @Author: ZQJ-1130123899
  * @Date: 2020-09-02 11:39:01
- * @LastEditTime: 2020-09-03 15:11:57
+ * @LastEditTime: 2020-09-04 14:35:37
  * @LastEditors: ZQJ-1130123899
  * @Description:
  * @FilePath: \zvue\mock\user.js
@@ -16,9 +16,14 @@ const tokens = {
   }
 }
 
-// const users = {
-
-// }
+const users = {
+  'admin-token-zzz': {
+    roles: ['admin']
+  },
+  'custorm-token-zzz': {
+    roles: ['custorm']
+  }
+}
 
 module.exports = [
   {
@@ -36,6 +41,26 @@ module.exports = [
       return {
         code: 200,
         data: token
+      }
+    }
+  },
+  {
+    url: '/zvue/user/info\.*',
+    type: 'get',
+    response: config => {
+      const { token } = config.query
+      const info = users[token]
+
+      if (!info) {
+        return {
+          code: 2333,
+          message: 'login failed'
+        }
+      }
+
+      return {
+        code: 200,
+        data: info
       }
     }
   }
