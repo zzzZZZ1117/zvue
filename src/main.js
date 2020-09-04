@@ -1,7 +1,7 @@
 /*
  * @Author: ZQJ-1130123899
  * @Date: 2020-09-01 16:40:26
- * @LastEditTime: 2020-09-03 14:51:32
+ * @LastEditTime: 2020-09-04 17:03:56
  * @LastEditors: ZQJ-1130123899
  * @Description: main.js
  * @FilePath: \zvue\src\main.js
@@ -11,9 +11,17 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-const { mockXHR } = require('../mock')
 
-mockXHR()
+import Element from 'element-ui'
+Vue.use(Element)
+
+import './permission'
+import './icons'
+
+if (process.env.NODE_ENV === 'production') {
+  const { mockXHR } = require('../mock')
+  mockXHR()
+}
 
 Vue.config.productionTip = false
 new Vue({
