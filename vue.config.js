@@ -1,7 +1,7 @@
 /*
  * @Author: ZQJ-1130123899
  * @Date: 2020-09-01 16:45:14
- * @LastEditTime: 2020-09-02 09:52:41
+ * @LastEditTime: 2020-09-04 17:10:30
  * @LastEditors: ZQJ-1130123899
  * @Description: vue配置
  * @FilePath: \zvue\vue.config.js
@@ -30,9 +30,9 @@ module.exports = {
     overlay: {
       warnings: false,
       errors: true
-    }
+    },
     // proxy: {}
-    // before: app => {}
+    before: require('./mock/mockServer')
   },
   // parallel: require("os").cpus().length > 1,
   // eslint-disable-next-line no-unused-vars
@@ -54,5 +54,21 @@ module.exports = {
       }
     }
   },
-  chainWebpack() {}
+  chainWebpack(config) {
+    config.module
+      .rule('svg')
+      .exclude.add(resolve('src/icons'))
+      .end()
+    config.module
+      .rule('icons')
+      .test(/\.svg$/)
+      .include.add(resolve('src/icons'))
+      .end()
+      .use('svg-sprite-loader')
+      .loader('svg-sprite-loader')
+      .options({
+        symbolId: 'icon-[name]'
+      })
+      .end()
+  }
 }
